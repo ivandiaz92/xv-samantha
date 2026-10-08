@@ -1,26 +1,197 @@
 @import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blush: #f0c4cb;
+  --antique-rose: #c87d87;
+  --champagne: #fbead6;
+  --dried-thyme: #6b7556;
+  --bisque: #e5bca9;
+  --ink: #3d342e;
+  --ink-soft: #5c524a;
+  --paper: #fbf4ea;
+  --background: var(--champagne);
+  --foreground: var(--ink);
 }
 
 @theme inline {
+  --color-blush: var(--blush);
+  --color-antique-rose: var(--antique-rose);
+  --color-champagne: var(--champagne);
+  --color-dried-thyme: var(--dried-thyme);
+  --color-bisque: var(--bisque);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-paper: var(--paper);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+  --font-script: var(--font-script);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--champagne);
+  background-image:
+    linear-gradient(180deg, rgba(251, 234, 214, 0.92), rgba(251, 234, 214, 0.88)),
+    url("/textures/paper.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+}
+
+::selection {
+  background: var(--blush);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: var(--font-display), serif;
+}
+
+.font-script {
+  font-family: var(--font-script), cursive;
+}
+
+.font-body {
+  font-family: var(--font-body), sans-serif;
+}
+
+.arch {
+  border-radius: 999px 999px 28px 28px;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 {
+  transition-delay: 0.12s;
+}
+.reveal-delay-2 {
+  transition-delay: 0.24s;
+}
+.reveal-delay-3 {
+  transition-delay: 0.36s;
+}
+
+/* Soft cascade for parents section — slower fade-in */
+.reveal-soft {
+  opacity: 0;
+  transform: translateY(10px);
+  filter: blur(2px);
+  transition:
+    opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-soft.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.reveal-soft.reveal-delay-1 {
+  transition-delay: 0.18s;
+}
+.reveal-soft.reveal-delay-2 {
+  transition-delay: 0.36s;
+}
+.reveal-soft.reveal-delay-3 {
+  transition-delay: 0.54s;
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes seal-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+/* Parallax photo band */
+.parallax-media {
+  /* Mobile crop — body in frame, not empty studio sky */
+  background-position: 50% 52%;
+  height: 150%;
+}
+
+@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
+  .parallax-media {
+    inset: 0;
+    height: 100% !important;
+    transform: none !important;
+    background-attachment: fixed;
+    background-position: 50% 58%;
+    background-size: cover;
+    will-change: auto;
+  }
+}
+
+.float-soft {
+  animation: float-soft 5.5s ease-in-out infinite;
+}
+
+.seal-pulse {
+  animation: seal-pulse 3.2s ease-in-out infinite;
+}
+
+.section-pad {
+  padding-inline: 1.25rem;
+  padding-block: 4.5rem;
+}
+
+@media (min-width: 768px) {
+  .section-pad {
+    padding-inline: 2rem;
+    padding-block: 6rem;
+  }
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #f3e6d6;
+  font-family: var(--font-body), sans-serif;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(61, 52, 46, 0.12);
+}
+
+.leaflet-popup-content {
+  margin: 12px 14px;
+  color: var(--ink);
 }

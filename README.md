@@ -1,36 +1,43 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Samantha Abigail · Invitación XV
 
-## Getting Started
+Invitación digital mobile-first para los XV de Samantha Abigail.
 
-First, run the development server:
+Parte del ecosistema **[rendevu.mx](https://rendevu.mx)** — invitaciones digitales bajo un mismo dominio:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+| Destino | Uso |
+| --- | --- |
+| `rendevu.mx` | One-pager / home de la marca (próximo) |
+| `rendevu.mx/xv-samantha` | Esta invitación |
+| `rendevu.mx/<slug>` | Futuras invitaciones |
+
+En local el `basePath` va vacío. Para desplegar bajo `/xv-samantha`:
+
+```
+NEXT_PUBLIC_BASE_PATH=/xv-samantha
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Desarrollo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Abre [http://localhost:3000](http://localhost:3000).
 
-## Learn More
+## Google Sheets (RSVP + Firmas)
 
-To learn more about Next.js, take a look at the following resources:
+1. Crea un Google Sheet con pestañas `RSVP` y `Firmas` (headers en la fila 1; ver `google-apps-script.js`).
+2. Extensiones → Apps Script → pega el contenido de `google-apps-script.js`.
+3. Implementar → Nueva implementación → Aplicación web (Ejecutar como: yo; Acceso: cualquiera).
+4. Copia la URL a `.env.local`:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+GOOGLE_SHEETS_WEBAPP_URL=https://script.google.com/macros/s/.../exec
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sin esa variable, los formularios se guardan en `data/rsvp.json` y `data/guestbook.json` (útil en local).
 
-## Deploy on Vercel
+## Contenido editable
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Fecha, countdown, dress code, fotos e itinerario: `src/lib/event.ts`.
