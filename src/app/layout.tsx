@@ -26,11 +26,11 @@ const ogImage = withBasePath("/fotos/0I3A5827.jpg");
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://ivandiaz92.github.io/xv-samantha"),
-  title: "Samantha Abigail · Mis XV",
+  title: "Samantha · Mis XV",
   description:
     "Con la bendición de Dios y de mis padres, te invito a celebrar mis XV años.",
   openGraph: {
-    title: "Samantha Abigail · Mis XV",
+    title: "Samantha · Mis XV",
     description: "Te invito a una noche especial llena de magia y alegría.",
     images: [ogImage],
   },

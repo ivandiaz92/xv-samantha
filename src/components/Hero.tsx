@@ -20,8 +20,8 @@ function HeroCopy({
         <p
           className={`mb-2 font-script leading-none ${
             over
-              ? "text-[3.25rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-6xl"
-              : "text-5xl text-antique-rose sm:text-6xl md:text-7xl"
+              ? "text-[3.55rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-6xl"
+              : "text-6xl text-antique-rose sm:text-7xl md:text-8xl"
           }`}
         >
           XV años
@@ -32,11 +32,11 @@ function HeroCopy({
         <h1
           className={`font-display leading-[0.95] tracking-tight ${
             over
-              ? "whitespace-nowrap text-[2.55rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-6xl"
-              : "text-[3.6rem] text-ink sm:text-7xl md:text-8xl"
+              ? "whitespace-nowrap text-[2.85rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-6xl"
+              : "text-[3.9rem] text-ink sm:text-7xl md:text-8xl"
           }`}
         >
-          Samantha Abigail
+          {event.celebrant.firstName}
         </h1>
       </Reveal>
 
@@ -44,8 +44,8 @@ function HeroCopy({
         <p
           className={`mt-4 font-medium uppercase tracking-[0.22em] ${
             over
-              ? "text-sm text-champagne/85 drop-shadow-[0_1px_8px_rgba(61,52,46,0.4)]"
-              : "text-xs text-dried-thyme"
+              ? "text-base text-champagne/85 drop-shadow-[0_1px_8px_rgba(61,52,46,0.4)]"
+              : "text-sm text-dried-thyme"
           }`}
         >
           {event.dateLabel}
@@ -66,7 +66,7 @@ export function Hero() {
             alt={event.celebrant.fullName}
             fill
             priority
-            className="object-cover object-[78%_22%]"
+            className="object-cover object-[50%_42%]"
             sizes="100vw"
           />
           <div

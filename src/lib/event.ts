@@ -11,30 +11,30 @@ export const event = {
     father: "Ignacio Alberto Lara Beltrán",
     mother: "Adriana Abigail González de la Garza",
   },
-  dateLabel: "20 de noviembre de 2026",
+  dateLabel: "20 de noviembre 2026",
   /** Viernes — misa 5:30 (America/Monterrey) */
   eventDateISO: "2026-11-20T17:30:00-06:00",
   /** Fin aproximado de la celebración */
   eventEndISO: "2026-11-20T23:30:00-06:00",
-  calendarTitle: "XV años de Samantha Abigail",
+  calendarTitle: "XV años de Samantha",
   dressCode: "Black & White",
   itinerary: [
     {
-      time: "5:30",
+      time: "5:30 PM",
       title: "Misa",
-      note: "Consideren sus tiempos de traslado: es viernes y la capilla está en carretera.",
+      note: "Capilla Santa María de Fuego Nuevo",
       icon: asset("/generated/icon-misa-t.png"),
     },
     {
-      time: "8:00",
+      time: "8:00 PM",
       title: "Recepción",
-      note: null,
-      icon: asset("/generated/icon-recepcion-t.png"),
+      note: "Verité",
+      icon: asset("/generated/icon-recepcion-one-t.png"),
     },
     {
-      time: "8:45",
+      time: "8:45 PM",
       title: "Vals",
-      note: null,
+      note: "Verité",
       icon: asset("/generated/icon-vals-t.png"),
     },
   ],
@@ -59,10 +59,10 @@ export const event = {
     },
   ],
   gallery: [
+    asset("/fotos/0I3A5940.jpg"),
     asset("/fotos/0I3A1900.jpg"),
     asset("/fotos/0I3A5743.jpg"),
     asset("/fotos/0I3A2145.jpg"),
-    asset("/fotos/0I3A5940.jpg"),
     asset("/fotos/0I3A6027.jpg"),
     asset("/fotos/0I3A6152.jpg"),
     asset("/fotos/0I3A6217.jpg"),
@@ -74,8 +74,8 @@ export const event = {
   ],
   // Desktop: boat landscape — Samantha on the right, open boat/water on the left
   heroImage: asset("/fotos/0I3A5827.jpg"),
-  // Mobile: twirl portrait
-  heroImageMobile: asset("/fotos/0I3A5940.jpg"),
+  // Mobile: boat portrait
+  heroImageMobile: asset("/fotos/0I3A5743.jpg"),
   parentsImage: asset("/fotos/0I3A5743.jpg"),
   parallaxImage: asset("/fotos/0I3A2409.jpg"),
 };

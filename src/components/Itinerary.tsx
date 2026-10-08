@@ -10,10 +10,7 @@ export function Itinerary() {
     >
       <div className="relative mx-auto max-w-xl">
         <Reveal>
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-dried-thyme">
-            El día de la fiesta
-          </p>
-          <h2 className="mt-3 text-center font-display text-4xl text-ink md:text-5xl">
+          <h2 className="text-center font-display text-4xl text-ink md:text-5xl">
             Itinerario
           </h2>
           <div className="mx-auto mt-6 h-px w-16 bg-gradient-to-r from-transparent via-antique-rose/70 to-transparent" />
@@ -58,7 +55,7 @@ export function Itinerary() {
                       {item.title}
                     </h3>
                     {item.note && (
-                      <p className="mt-4 max-w-xs text-sm leading-relaxed text-ink-soft md:max-w-sm">
+                      <p className="mt-4 max-w-xs text-lg leading-relaxed text-ink-soft md:max-w-sm md:text-xl">
                         {item.note}
                       </p>
                     )}

@@ -96,7 +96,7 @@ export function Countdown() {
 
         <Reveal delay={2}>
           <p className="mt-8 font-display text-2xl leading-snug text-ink sm:text-3xl md:mt-10 md:text-4xl">
-            para el día de la fiesta
+            para la gran celebración
           </p>
         </Reveal>
 

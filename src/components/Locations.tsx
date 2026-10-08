@@ -39,15 +39,19 @@ export function Locations() {
           </div>
         </Reveal>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2">
+        <div className="mt-10 grid gap-6 overflow-visible pt-5 md:grid-cols-2">
           {event.locations.map((loc, i) => (
-            <Reveal key={loc.id} delay={(i + 1) as 1 | 2}>
-              <article className="relative overflow-hidden rounded-[28px] bg-paper/80 px-6 py-7 shadow-[0_12px_40px_rgba(61,52,46,0.06)]">
+            <Reveal
+              key={loc.id}
+              delay={(i + 1) as 1 | 2}
+              className="overflow-visible"
+            >
+              <article className="relative overflow-visible rounded-[28px] bg-paper/80 px-6 py-7 shadow-[0_12px_40px_rgba(61,52,46,0.06)]">
                 <img
                   src={withBasePath("/decor/xv-sam-flor.png")}
                   alt=""
                   aria-hidden
-                  className="pointer-events-none absolute -right-2 -top-2 w-16 object-contain opacity-60 md:w-[4.5rem]"
+                  className="pointer-events-none absolute -right-3 -top-4 z-10 w-16 object-contain opacity-60 md:-right-4 md:-top-5 md:w-[4.5rem]"
                 />
                 <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-antique-rose">
                   {loc.label}

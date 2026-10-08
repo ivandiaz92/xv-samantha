@@ -158,16 +158,16 @@ body {
   animation: parents-rule 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.72s both;
 }
 
-.parents-scene.parents-in .parents-copy {
-  animation: parents-copy-in 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.88s both;
-}
-
 .parents-scene.parents-in .parents-card-papa {
-  animation: parents-card-left 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both;
+  animation: parents-card-left 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.88s both;
 }
 
 .parents-scene.parents-in .parents-card-mama {
-  animation: parents-card-right 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.28s both;
+  animation: parents-card-right 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.02s both;
+}
+
+.parents-scene.parents-in .parents-copy {
+  animation: parents-copy-in 1.05s cubic-bezier(0.22, 1, 0.36, 1) 1.22s both;
 }
 
 @keyframes parents-bloom {

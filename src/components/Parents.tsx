@@ -48,22 +48,16 @@ export function Parents() {
         </div>
 
         <p className="parents-script font-script text-4xl text-antique-rose md:text-5xl">
-          Con amor
+          Con la bendición
         </p>
 
-        <h2 className="parents-title mt-3 font-display text-4xl text-ink md:text-5xl">
-          <span className="parents-title-inner">Mis papás</span>
+        <h2 className="parents-title mt-3 font-display text-3xl leading-tight text-ink md:text-5xl">
+          <span className="parents-title-inner">de Dios y de mis papás</span>
         </h2>
 
         <div className="parents-rule mx-auto mt-7 h-px w-16 bg-gradient-to-r from-transparent via-antique-rose/70 to-transparent" />
 
-        <p className="parents-copy mx-auto mt-10 max-w-lg text-base leading-relaxed text-ink-soft md:mt-12 md:text-lg">
-          Con la bendición de Dios y de mis padres,{" "}
-          <span className="text-ink">{event.celebrant.fullName}</span>, te
-          invita a compartir este momento tan especial.
-        </p>
-
-        <div className="mx-auto mt-12 grid max-w-xl gap-8 sm:grid-cols-2 sm:gap-10 md:mt-14">
+        <div className="mx-auto mt-10 grid max-w-xl gap-8 sm:grid-cols-2 sm:gap-10 md:mt-12">
           <div className="parents-card parents-card-papa">
             <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-dried-thyme">
               Papá
@@ -81,6 +75,11 @@ export function Parents() {
             </p>
           </div>
         </div>
+
+        <p className="parents-copy mx-auto mt-12 max-w-lg text-base leading-relaxed text-ink-soft md:mt-14 md:text-lg">
+          <span className="text-ink">{event.celebrant.fullName}</span>, te
+          invita a compartir este momento tan especial.
+        </p>
       </div>
     </section>
   );
