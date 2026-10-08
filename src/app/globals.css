@@ -89,31 +89,200 @@ body {
   transition-delay: 0.36s;
 }
 
-/* Soft cascade for parents section — slower fade-in */
-.reveal-soft {
+/* —— Parents section: romantic staged entrance —— */
+.parents-flor,
+.parents-script,
+.parents-title,
+.parents-rule,
+.parents-copy,
+.parents-card {
   opacity: 0;
-  transform: translateY(10px);
-  filter: blur(2px);
-  transition:
-    opacity 1.15s cubic-bezier(0.22, 1, 0.36, 1),
-    transform 1.05s cubic-bezier(0.22, 1, 0.36, 1),
-    filter 1.15s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform, opacity, filter;
 }
 
-.reveal-soft.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
+.parents-flor {
+  transform: scale(0.72) rotate(-8deg);
+  filter: blur(6px);
 }
 
-.reveal-soft.reveal-delay-1 {
-  transition-delay: 0.18s;
+.parents-script {
+  transform: translateY(18px);
+  letter-spacing: 0.18em;
+  filter: blur(5px);
 }
-.reveal-soft.reveal-delay-2 {
-  transition-delay: 0.36s;
+
+.parents-title {
+  transform: translateY(22px);
 }
-.reveal-soft.reveal-delay-3 {
-  transition-delay: 0.54s;
+
+.parents-title-inner {
+  display: inline-block;
+  clip-path: inset(0 100% 0 0);
+}
+
+.parents-rule {
+  transform: scaleX(0);
+  transform-origin: center;
+}
+
+.parents-copy {
+  transform: translateY(16px);
+  filter: blur(4px);
+}
+
+.parents-card-papa {
+  transform: translateX(-36px) translateY(10px);
+}
+
+.parents-card-mama {
+  transform: translateX(36px) translateY(10px);
+}
+
+.parents-scene.parents-in .parents-flor {
+  animation: parents-bloom 1.1s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.parents-scene.parents-in .parents-script {
+  animation: parents-script-in 1s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.parents-scene.parents-in .parents-title {
+  animation: parents-rise 0.85s cubic-bezier(0.22, 1, 0.36, 1) 0.42s both;
+}
+
+.parents-scene.parents-in .parents-title-inner {
+  animation: parents-wipe 1s cubic-bezier(0.22, 1, 0.36, 1) 0.48s both;
+}
+
+.parents-scene.parents-in .parents-rule {
+  animation: parents-rule 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.72s both;
+}
+
+.parents-scene.parents-in .parents-copy {
+  animation: parents-copy-in 1.05s cubic-bezier(0.22, 1, 0.36, 1) 0.88s both;
+}
+
+.parents-scene.parents-in .parents-card-papa {
+  animation: parents-card-left 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.15s both;
+}
+
+.parents-scene.parents-in .parents-card-mama {
+  animation: parents-card-right 0.95s cubic-bezier(0.22, 1, 0.36, 1) 1.28s both;
+}
+
+@keyframes parents-bloom {
+  0% {
+    opacity: 0;
+    transform: scale(0.72) rotate(-8deg);
+    filter: blur(6px);
+  }
+  60% {
+    opacity: 1;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter: blur(0);
+  }
+}
+
+@keyframes parents-script-in {
+  0% {
+    opacity: 0;
+    transform: translateY(18px);
+    letter-spacing: 0.18em;
+    filter: blur(5px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+    letter-spacing: normal;
+    filter: blur(0);
+  }
+}
+
+@keyframes parents-rise {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes parents-wipe {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}
+
+@keyframes parents-rule {
+  from {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes parents-copy-in {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+    filter: blur(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@keyframes parents-card-left {
+  from {
+    opacity: 0;
+    transform: translateX(-36px) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@keyframes parents-card-right {
+  from {
+    opacity: 0;
+    transform: translateX(36px) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parents-flor,
+  .parents-script,
+  .parents-title,
+  .parents-title-inner,
+  .parents-rule,
+  .parents-copy,
+  .parents-card {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    clip-path: none !important;
+    letter-spacing: normal !important;
+    animation: none !important;
+  }
 }
 
 @keyframes float-soft {
