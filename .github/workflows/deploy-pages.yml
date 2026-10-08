@@ -1,8 +1,8 @@
 name: Deploy GitHub Pages
 
+# Manual only for now — push to main should not deploy or email failures.
+# Re-enable `push: branches: [main]` when ready to ship to Pages.
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -32,7 +32,8 @@ jobs:
         run: mv src/app/api .api-stash
 
       - name: Build static site
-        run: npm run build
+        # webpack: Next 16 default turbopack breaks next/font/google in CI
+        run: npx next build --webpack
         env:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_BASE_PATH: /xv-samantha
