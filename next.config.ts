@@ -1,17 +1,26 @@
 import type { NextConfig } from "next";
 
 /**
- * For rendevu.mx/xv-samantha set:
+ * Local: no basePath.
+ * GitHub Pages / rendevu path deploy:
  *   NEXT_PUBLIC_BASE_PATH=/xv-samantha
- * Leave empty for local dev or a dedicated subdomain later.
+ *   GITHUB_PAGES=true  → static `out/` export
  */
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH?.replace(/\/$/, "") || "";
+const isStaticExport = process.env.GITHUB_PAGES === "true";
 
 const nextConfig: NextConfig = {
   ...(basePath
     ? {
         basePath,
         assetPrefix: basePath,
+      }
+    : {}),
+  ...(isStaticExport
+    ? {
+        output: "export" as const,
+        images: { unoptimized: true },
+        trailingSlash: true,
       }
     : {}),
 };

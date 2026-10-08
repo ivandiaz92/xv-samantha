@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useCallback, useEffect, useState } from "react";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 type Message = {
@@ -19,7 +20,7 @@ export function Guestbook() {
 
   const load = useCallback(async () => {
     try {
-      const res = await fetch("/api/guestbook");
+      const res = await fetch(withBasePath("/api/guestbook"));
       if (!res.ok) return;
       const data = await res.json();
       if (Array.isArray(data.messages)) setEntries(data.messages);
@@ -44,7 +45,7 @@ export function Guestbook() {
     };
 
     try {
-      const res = await fetch("/api/guestbook", {
+      const res = await fetch(withBasePath("/api/guestbook"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(optimistic),

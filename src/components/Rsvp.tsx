@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 export function Rsvp() {
@@ -24,7 +25,7 @@ export function Rsvp() {
     setStatus("loading");
 
     try {
-      const res = await fetch("/api/rsvp", {
+      const res = await fetch(withBasePath("/api/rsvp"), {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

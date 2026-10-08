@@ -16,6 +16,14 @@ En local el `basePath` va vacío. Para desplegar bajo `/xv-samantha`:
 NEXT_PUBLIC_BASE_PATH=/xv-samantha
 ```
 
+## GitHub Pages (preview estática)
+
+Cada push a `main` publica en:
+
+**https://ivandiaz92.github.io/xv-samantha/**
+
+> Pages es solo HTML estático: RSVP / firmas **no** tienen backend ahí (eso vuelve con Sheets + host Node, o Vercel/etc.). La invitación visual sí se ve completa.
+
 ## Desarrollo
 
 ```bash
