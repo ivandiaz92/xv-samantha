@@ -9,6 +9,7 @@ import { Gallery } from "@/components/Gallery";
 import { Guestbook } from "@/components/Guestbook";
 import { Rsvp } from "@/components/Rsvp";
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         {/* Overlays the natural seam — does not add section height */}
         <div className="pointer-events-none absolute bottom-0 left-1/2 z-20 w-full max-w-2xl -translate-x-1/2 translate-y-1/2 px-5">
           <img
-            src="/decor/rose-border.png"
+            src={withBasePath("/decor/rose-border.png")}
             alt=""
             aria-hidden
             className="mx-auto w-full max-w-[340px] opacity-90 sm:max-w-md md:max-w-xl"

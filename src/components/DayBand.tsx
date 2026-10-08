@@ -1,5 +1,6 @@
 import { Countdown } from "@/components/Countdown";
 import { Itinerary } from "@/components/Itinerary";
+import { withBasePath } from "@/lib/paths";
 
 /** Shared watercolor atmosphere for countdown + itinerary */
 export function DayBand() {
@@ -9,7 +10,7 @@ export function DayBand() {
         aria-hidden
         className="pointer-events-none absolute inset-0"
         style={{
-          backgroundImage: 'url("/textures/watercolor-washes.jpg")',
+          backgroundImage: `url("${withBasePath("/textures/watercolor-washes.jpg")}")`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -21,7 +22,7 @@ export function DayBand() {
         <Countdown />
         <div className="relative flex justify-center px-5 py-8 md:py-12">
           <img
-            src="/decor/ornate-divider.png"
+            src={withBasePath("/decor/ornate-divider.png")}
             alt=""
             aria-hidden
             className="w-full max-w-xl object-contain opacity-60 md:max-w-3xl"

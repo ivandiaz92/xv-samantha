@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 /** Portrait feature — photo only (separated from parents text) */
@@ -19,7 +20,7 @@ export function Portrait() {
               />
             </div>
             <img
-              src="/decor/wreath.png"
+              src={withBasePath("/decor/wreath.png")}
               alt=""
               aria-hidden
               className="pointer-events-none absolute -bottom-8 -left-8 w-36 opacity-90 float-soft md:w-44"

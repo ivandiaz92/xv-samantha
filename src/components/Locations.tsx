@@ -2,6 +2,7 @@
 
 import dynamic from "next/dynamic";
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 const LocationsMap = dynamic(
@@ -43,7 +44,7 @@ export function Locations() {
             <Reveal key={loc.id} delay={(i + 1) as 1 | 2}>
               <article className="relative overflow-hidden rounded-[28px] bg-paper/80 px-6 py-7 shadow-[0_12px_40px_rgba(61,52,46,0.06)]">
                 <img
-                  src="/decor/xv-sam-flor.png"
+                  src={withBasePath("/decor/xv-sam-flor.png")}
                   alt=""
                   aria-hidden
                   className="pointer-events-none absolute -right-2 -top-2 w-16 object-contain opacity-60 md:w-[4.5rem]"

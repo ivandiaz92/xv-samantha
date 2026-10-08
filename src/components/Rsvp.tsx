@@ -54,7 +54,7 @@ export function Rsvp() {
         <Reveal>
           <div className="text-center">
             <img
-              src="/decor/seal.png"
+              src={withBasePath("/decor/seal.png")}
               alt=""
               aria-hidden
               className="mx-auto mb-5 w-20 seal-pulse md:w-24"

@@ -1,4 +1,5 @@
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 /** Parents blessing / names — text only, below hero */
@@ -11,7 +12,7 @@ export function Parents() {
       <div className="relative mx-auto max-w-2xl text-center">
         <Reveal className="reveal-soft">
           <img
-            src="/decor/flor-divisor.png"
+            src={withBasePath("/decor/flor-divisor.png")}
             alt=""
             aria-hidden
             className="mx-auto mb-10 w-full max-w-[280px] object-contain sm:max-w-[340px] md:mb-12 md:max-w-[400px]"

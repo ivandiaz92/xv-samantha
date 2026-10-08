@@ -68,7 +68,7 @@ export function Guestbook() {
   return (
     <section id="firmas" className="section-pad relative overflow-hidden">
       <img
-        src="/decor/hojitas.png"
+        src={withBasePath("/decor/hojitas.png")}
         alt=""
         aria-hidden
         className="pointer-events-none absolute -left-2 top-10 w-44 opacity-40 md:top-12 md:w-64 lg:w-72"
@@ -93,7 +93,7 @@ export function Guestbook() {
             onSubmit={onSubmit}
             className="relative mx-auto mt-10 max-w-lg overflow-hidden rounded-[28px] px-8 py-12 sm:px-10 sm:py-14 md:max-w-xl md:px-14 md:py-16"
             style={{
-              backgroundImage: "url('/decor/paper-deckle.png')",
+              backgroundImage: `url('${withBasePath("/decor/paper-deckle.png")}')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

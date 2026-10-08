@@ -86,7 +86,9 @@ export function ParallaxPhoto() {
       <div
         ref={mediaRef}
         className="parallax-media absolute left-0 top-0 w-full bg-cover bg-no-repeat will-change-transform"
-        style={{ backgroundImage: `url(${event.parallaxImage})` }}
+        style={{
+          backgroundImage: `url(${event.parallaxImage})`,
+        }}
         role="img"
         aria-label={event.celebrant.fullName}
       />

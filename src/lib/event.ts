@@ -1,3 +1,7 @@
+import { withBasePath } from "@/lib/paths";
+
+const asset = (path: string) => withBasePath(path);
+
 export const event = {
   celebrant: {
     firstName: "Samantha",
@@ -19,19 +23,19 @@ export const event = {
       time: "5:30",
       title: "Misa",
       note: "Consideren sus tiempos de traslado: es viernes y la capilla está en carretera.",
-      icon: "/generated/icon-misa-t.png",
+      icon: asset("/generated/icon-misa-t.png"),
     },
     {
       time: "8:00",
       title: "Recepción",
       note: null,
-      icon: "/generated/icon-recepcion-t.png",
+      icon: asset("/generated/icon-recepcion-t.png"),
     },
     {
       time: "8:45",
       title: "Vals",
       note: null,
-      icon: "/generated/icon-vals-t.png",
+      icon: asset("/generated/icon-vals-t.png"),
     },
   ],
   locations: [
@@ -55,23 +59,23 @@ export const event = {
     },
   ],
   gallery: [
-    "/fotos/0I3A1900.jpg",
-    "/fotos/0I3A5743.jpg",
-    "/fotos/0I3A2145.jpg",
-    "/fotos/0I3A5940.jpg",
-    "/fotos/0I3A6027.jpg",
-    "/fotos/0I3A6152.jpg",
-    "/fotos/0I3A6217.jpg",
-    "/fotos/0I3A1741.jpg",
-    "/fotos/0I3A2299.jpg",
-    "/fotos/0I3A2403.jpg",
-    "/fotos/0I3A5997.jpg",
-    "/fotos/0I3A6094.jpg",
+    asset("/fotos/0I3A1900.jpg"),
+    asset("/fotos/0I3A5743.jpg"),
+    asset("/fotos/0I3A2145.jpg"),
+    asset("/fotos/0I3A5940.jpg"),
+    asset("/fotos/0I3A6027.jpg"),
+    asset("/fotos/0I3A6152.jpg"),
+    asset("/fotos/0I3A6217.jpg"),
+    asset("/fotos/0I3A1741.jpg"),
+    asset("/fotos/0I3A2299.jpg"),
+    asset("/fotos/0I3A2403.jpg"),
+    asset("/fotos/0I3A5997.jpg"),
+    asset("/fotos/0I3A6094.jpg"),
   ],
   // Desktop: boat landscape — Samantha on the right, open boat/water on the left
-  heroImage: "/fotos/0I3A5827.jpg",
+  heroImage: asset("/fotos/0I3A5827.jpg"),
   // Mobile: twirl portrait
-  heroImageMobile: "/fotos/0I3A5940.jpg",
-  parentsImage: "/fotos/0I3A5743.jpg",
-  parallaxImage: "/fotos/0I3A2409.jpg",
-} as const;
+  heroImageMobile: asset("/fotos/0I3A5940.jpg"),
+  parentsImage: asset("/fotos/0I3A5743.jpg"),
+  parallaxImage: asset("/fotos/0I3A2409.jpg"),
+};

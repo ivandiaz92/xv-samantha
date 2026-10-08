@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 function HeroCopy({
@@ -123,7 +124,7 @@ export function Hero() {
         </div>
 
         <img
-          src="/decor/eucalyptus.png"
+          src={withBasePath("/decor/eucalyptus.png")}
           alt=""
           aria-hidden
           className="pointer-events-none absolute left-6 top-24 w-32 opacity-45 float-soft lg:w-40"
