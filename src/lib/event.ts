@@ -75,8 +75,8 @@ export const event = {
   giftIcon: asset("/generated/icon-sobre-t.png"),
   // Desktop: boat landscape — Samantha on the right, open boat/water on the left
   heroImage: asset("/fotos/0I3A5827.jpg"),
-  // Mobile: boat portrait
-  heroImageMobile: asset("/fotos/0I3A5743.jpg"),
+  // Mobile: fence / mountain portrait
+  heroImageMobile: asset("/fotos/0I3A6152.jpg"),
   parentsImage: asset("/fotos/0I3A5743.jpg"),
   parallaxImage: asset("/fotos/0I3A2409.jpg"),
   parallaxPortraitImage: asset("/fotos/0I3A5743.jpg"),

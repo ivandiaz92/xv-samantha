@@ -129,27 +129,22 @@ export function Rsvp() {
                 </label>
               </div>
 
-              <fieldset>
-                <legend className="mb-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-dried-thyme">
+              <label className="block">
+                <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-dried-thyme">
                   ¿Cuántos invitados?
-                </legend>
-                <div className="grid grid-cols-2 gap-3">
-                  {(["1", "2"] as const).map((n) => (
-                    <button
-                      key={n}
-                      type="button"
-                      onClick={() => update("guests", n)}
-                      className={`rounded-2xl border px-4 py-3 text-sm transition ${
-                        form.guests === n
-                          ? "border-dried-thyme bg-dried-thyme text-champagne"
-                          : "border-antique-rose/25 bg-champagne/70 text-ink hover:border-antique-rose"
-                      }`}
-                    >
-                      {n} {n === "1" ? "persona" : "personas"}
-                    </button>
-                  ))}
-                </div>
-              </fieldset>
+                </span>
+                <input
+                  required
+                  type="number"
+                  inputMode="numeric"
+                  min={1}
+                  max={20}
+                  step={1}
+                  value={form.guests}
+                  onChange={(e) => update("guests", e.target.value)}
+                  className="w-full rounded-2xl border border-antique-rose/25 bg-champagne/70 px-4 py-3 text-sm outline-none focus:border-antique-rose"
+                />
+              </label>
 
               <label className="block">
                 <span className="mb-1.5 block text-[11px] font-semibold uppercase tracking-[0.16em] text-dried-thyme">

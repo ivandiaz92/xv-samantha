@@ -20,7 +20,7 @@ function HeroCopy({
         <p
           className={`mb-2 font-script leading-none ${
             over
-              ? "text-[3.65rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-[3.85rem]"
+              ? "text-[4.15rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-[4.4rem]"
               : "text-6xl text-antique-rose sm:text-7xl md:text-8xl"
           }`}
         >
@@ -30,9 +30,9 @@ function HeroCopy({
 
       <Reveal delay={1}>
         <h1
-          className={`font-display leading-[0.95] tracking-tight ${
+          className={`font-display font-bold leading-[0.95] tracking-tight ${
             over
-              ? "whitespace-nowrap text-[2.95rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-[3.85rem]"
+              ? "whitespace-nowrap text-[3.75rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-[4.1rem]"
               : "text-[3.9rem] text-ink sm:text-7xl md:text-8xl"
           }`}
         >
@@ -62,7 +62,7 @@ export function Hero() {
             alt={event.celebrant.fullName}
             fill
             priority
-            className="object-cover object-[50%_42%]"
+            className="object-cover object-[55%_48%]"
             sizes="100vw"
           />
           <div
@@ -71,8 +71,8 @@ export function Hero() {
               background: `
                 linear-gradient(
                   to bottom,
-                  rgba(61, 52, 46, 0.5) 0%,
-                  rgba(61, 52, 46, 0.22) 55%,
+                  rgba(61, 52, 46, 0.48) 0%,
+                  rgba(61, 52, 46, 0.2) 55%,
                   rgba(61, 52, 46, 0) 100%
                 )
               `,
@@ -96,7 +96,7 @@ export function Hero() {
             }}
           />
 
-          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-24">
+          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-[8.5rem] sm:pt-40">
             <HeroCopy variant="overPhoto" />
           </div>
         </div>

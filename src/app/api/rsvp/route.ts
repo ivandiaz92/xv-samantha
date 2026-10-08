@@ -10,7 +10,14 @@ export async function POST(request: Request) {
     const allergies = String(body.allergies ?? "").trim();
     const guests = Number(body.guests);
 
-    if (!firstName || !lastName || !phone || ![1, 2].includes(guests)) {
+    if (
+      !firstName ||
+      !lastName ||
+      !phone ||
+      !Number.isInteger(guests) ||
+      guests < 1 ||
+      guests > 20
+    ) {
       return NextResponse.json({ error: "invalid" }, { status: 400 });
     }
 
