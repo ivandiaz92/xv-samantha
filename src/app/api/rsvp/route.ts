@@ -24,12 +24,9 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    const sheets = await postToSheets(entry);
+    // Local backup first so we never lose the RSVP if Sheets is slow
     await appendLocalJson("rsvp.json", entry);
-
-    if (!sheets.ok && process.env.GOOGLE_SHEETS_WEBAPP_URL) {
-      return NextResponse.json({ error: "sheets_failed" }, { status: 502 });
-    }
+    const sheets = await postToSheets(entry);
 
     return NextResponse.json({ ok: true, sheets: sheets.ok });
   } catch {

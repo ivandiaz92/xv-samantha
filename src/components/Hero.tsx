@@ -20,7 +20,7 @@ function HeroCopy({
         <p
           className={`mb-2 font-script leading-none ${
             over
-              ? "text-[3.55rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-6xl"
+              ? "text-[3.65rem] text-blush drop-shadow-[0_2px_10px_rgba(61,52,46,0.35)] sm:text-[3.85rem]"
               : "text-6xl text-antique-rose sm:text-7xl md:text-8xl"
           }`}
         >
@@ -32,7 +32,7 @@ function HeroCopy({
         <h1
           className={`font-display leading-[0.95] tracking-tight ${
             over
-              ? "whitespace-nowrap text-[2.85rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-6xl"
+              ? "whitespace-nowrap text-[2.95rem] text-champagne drop-shadow-[0_3px_16px_rgba(61,52,46,0.45)] sm:text-[3.85rem]"
               : "text-[3.9rem] text-ink sm:text-7xl md:text-8xl"
           }`}
         >
@@ -79,14 +79,24 @@ export function Hero() {
             }}
           />
           <div
-            className="absolute inset-x-0 bottom-0 h-32"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-[42%]"
             style={{
-              background:
-                "linear-gradient(to top, rgba(251,234,214,1) 0%, rgba(251,234,214,0.55) 45%, rgba(251,234,214,0) 100%)",
+              // Longer, softer fade so the champagne seam doesn’t read as a hard line
+              background: `
+                linear-gradient(
+                  to top,
+                  rgba(251, 234, 214, 1) 0%,
+                  rgba(251, 234, 214, 0.92) 12%,
+                  rgba(251, 234, 214, 0.62) 32%,
+                  rgba(251, 234, 214, 0.28) 55%,
+                  rgba(251, 234, 214, 0.08) 78%,
+                  rgba(251, 234, 214, 0) 100%
+                )
+              `,
             }}
           />
 
-          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-16">
+          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-24">
             <HeroCopy variant="overPhoto" />
           </div>
         </div>

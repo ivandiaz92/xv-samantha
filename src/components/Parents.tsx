@@ -79,7 +79,7 @@ export function Parents() {
           atentamente:
         </p>
         <p className="parents-sign-name mt-2 font-display text-2xl leading-snug text-ink md:text-3xl">
-          Samantha Abigail Lara de la Garza
+          {event.celebrant.fullName}
         </p>
       </div>
     </section>

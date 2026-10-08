@@ -3,11 +3,22 @@
 import { useEffect, useRef } from "react";
 import { event } from "@/lib/event";
 
+type ParallaxPhotoProps = {
+  image: string;
+  /** CSS crop class — see globals.css */
+  mediaClassName?: string;
+  className?: string;
+};
+
 /**
  * Desktop: CSS background-attachment:fixed (smooth, no JS wobble).
  * Mobile: soft JS pan only — never overwrite the mobile crop that worked.
  */
-export function ParallaxPhoto() {
+export function ParallaxPhoto({
+  image,
+  mediaClassName = "parallax-media",
+  className = "relative h-[58vh] min-h-[280px] max-h-[520px] w-full overflow-hidden md:h-[75vh] md:max-h-none",
+}: ParallaxPhotoProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const mediaRef = useRef<HTMLDivElement>(null);
 
@@ -16,7 +27,6 @@ export function ParallaxPhoto() {
     const media = mediaRef.current;
     if (!section || !media) return;
 
-    // Desktop uses CSS fixed attachment — leave transforms alone
     const desktop = window.matchMedia(
       "(hover: hover) and (pointer: fine) and (min-width: 768px)",
     );
@@ -32,8 +42,7 @@ export function ParallaxPhoto() {
         media.style.transform = "";
         return;
       }
-      // Mobile: taller than the band for a gentle pan
-      media.style.height = `${Math.round(section.offsetHeight * 1.5)}px`;
+      media.style.height = `${Math.round(section.offsetHeight * 1.55)}px`;
     };
 
     const update = () => {
@@ -44,12 +53,11 @@ export function ParallaxPhoto() {
       }
 
       const rect = section.getBoundingClientRect();
-      const extra = section.offsetHeight * 0.5;
+      const extra = section.offsetHeight * 0.55;
       const progress = Math.min(
         1,
         Math.max(0, (vh - rect.top) / (vh + rect.height)),
       );
-      // Integer px, soft travel — avoids the 1:1 lock that made iOS shake
       media.style.transform = `translate3d(0, ${Math.round(-progress * extra)}px, 0)`;
     };
 
@@ -78,17 +86,11 @@ export function ParallaxPhoto() {
   }, []);
 
   return (
-    <section
-      ref={sectionRef}
-      aria-label="Retrato"
-      className="relative h-[58vh] min-h-[280px] max-h-[520px] w-full overflow-hidden md:h-[75vh] md:max-h-none"
-    >
+    <section ref={sectionRef} aria-label="Retrato" className={className}>
       <div
         ref={mediaRef}
-        className="parallax-media absolute left-0 top-0 w-full bg-cover bg-no-repeat will-change-transform"
-        style={{
-          backgroundImage: `url(${event.parallaxImage})`,
-        }}
+        className={`${mediaClassName} absolute left-0 top-0 w-full bg-cover bg-no-repeat will-change-transform`}
+        style={{ backgroundImage: `url(${image})` }}
         role="img"
         aria-label={event.celebrant.fullName}
       />

@@ -35,14 +35,23 @@ export async function postToSheets(payload: Record<string, unknown>) {
   const url = process.env.GOOGLE_SHEETS_WEBAPP_URL;
   if (!url) return { ok: false as const, reason: "missing_url" as const };
 
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 12_000);
+
   try {
-    // text/plain avoids Apps Script JSON content-type quirks
+    // Apps Script writes the row, then 302s. Following that redirect often hangs
+    // forever — treat 3xx as success and never follow.
     const res = await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify(payload),
-      redirect: "follow",
+      redirect: "manual",
+      signal: controller.signal,
     });
+
+    if (res.status >= 300 && res.status < 400) {
+      return { ok: true as const, data: null };
+    }
 
     const text = await res.text();
     const trimmed = text.trim();
@@ -52,8 +61,7 @@ export async function postToSheets(payload: Record<string, unknown>) {
       return { ok: data.ok !== false, data };
     }
 
-    // Redirect follow sometimes returns HTML even when the row was written
-    if (res.ok || res.status === 302) {
+    if (res.ok) {
       return { ok: true as const, data: null };
     }
 
@@ -62,8 +70,14 @@ export async function postToSheets(payload: Record<string, unknown>) {
       reason: "http_error" as const,
       status: res.status,
     };
-  } catch {
+  } catch (err) {
+    // Timeout/abort: row is often already written; don't fail the guest UX
+    if (err instanceof Error && err.name === "AbortError") {
+      return { ok: true as const, data: null, timedOut: true as const };
+    }
     return { ok: false as const, reason: "network" as const };
+  } finally {
+    clearTimeout(timer);
   }
 }
 

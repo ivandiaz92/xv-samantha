@@ -71,7 +71,7 @@ export function Guestbook() {
         src={withBasePath("/decor/hojitas.png")}
         alt=""
         aria-hidden
-        className="pointer-events-none absolute -left-2 top-10 w-44 opacity-40 md:top-12 md:w-64 lg:w-72"
+        className="pointer-events-none absolute -left-2 top-10 w-44 opacity-33 md:top-12 md:w-64 lg:w-72"
       />
 
       <div className="relative mx-auto max-w-3xl">

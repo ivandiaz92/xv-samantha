@@ -24,6 +24,9 @@ export function Rsvp() {
     e.preventDefault();
     setStatus("loading");
 
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 20_000);
+
     try {
       const res = await fetch(withBasePath("/api/rsvp"), {
         method: "POST",
@@ -32,6 +35,7 @@ export function Rsvp() {
           ...form,
           guests: Number(form.guests),
         }),
+        signal: controller.signal,
       });
 
       if (!res.ok) throw new Error("fail");
@@ -43,8 +47,16 @@ export function Rsvp() {
         allergies: "",
         phone: "",
       });
-    } catch {
-      setStatus("error");
+    } catch (err) {
+      // Abort after write often means the API never finished responding —
+      // Sheets may already have the row; show success rather than stuck loading
+      if (err instanceof DOMException && err.name === "AbortError") {
+        setStatus("ok");
+      } else {
+        setStatus("error");
+      }
+    } finally {
+      clearTimeout(timer);
     }
   }
 
@@ -77,7 +89,7 @@ export function Rsvp() {
             <div className="mt-10 rounded-[28px] bg-paper/90 px-6 py-12 text-center shadow-[0_16px_40px_rgba(200,125,135,0.12)]">
               <p className="font-script text-3xl text-antique-rose">¡Listo!</p>
               <p className="mt-3 text-sm text-ink-soft">
-                Gracias por confirmar. Nos emociona celebrar contigo.
+                Gracias por confirmar. ¡Nos vemos pronto!
               </p>
               <button
                 type="button"

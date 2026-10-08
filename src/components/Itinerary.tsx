@@ -42,6 +42,7 @@ export function Itinerary() {
                           alt=""
                           width={220}
                           height={220}
+                          unoptimized
                           className="h-auto w-[9.5rem] object-contain md:w-[11.5rem]"
                           sizes="(max-width:768px) 152px, 184px"
                         />

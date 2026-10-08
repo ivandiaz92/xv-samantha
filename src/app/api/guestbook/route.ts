@@ -38,8 +38,8 @@ export async function POST(request: Request) {
       createdAt: new Date().toISOString(),
     };
 
-    await postToSheets({ type: "guestbook", ...entry });
     await appendLocalJson("guestbook.json", entry);
+    await postToSheets({ type: "guestbook", ...entry });
 
     return NextResponse.json({ ok: true });
   } catch {

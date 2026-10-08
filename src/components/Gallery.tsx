@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { event } from "@/lib/event";
+import { withBasePath } from "@/lib/paths";
 import { Reveal } from "./Reveal";
 
 export function Gallery() {
@@ -101,8 +102,27 @@ export function Gallery() {
   }, [active, go]);
 
   return (
-    <section id="fotos" className="section-pad overflow-hidden bg-bisque/25">
-      <div className="mx-auto max-w-6xl">
+    <section
+      id="fotos"
+      className="section-pad relative overflow-hidden bg-champagne/40"
+    >
+      {/* Olives texture — soft full-bleed atmosphere */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 select-none"
+      >
+        <Image
+          src={withBasePath("/textures/olives-BG.png")}
+          alt=""
+          fill
+          unoptimized
+          priority={false}
+          className="object-cover object-center opacity-[0.32] sm:opacity-[0.32] md:opacity-[0.36]"
+          sizes="100vw"
+        />
+      </div>
+
+      <div className="relative mx-auto max-w-6xl">
         <Reveal>
           <h2 className="text-center font-display text-4xl text-ink md:text-5xl">
             Galería

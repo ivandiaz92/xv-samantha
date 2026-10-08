@@ -18,6 +18,8 @@ export const event = {
   eventEndISO: "2026-11-20T23:30:00-06:00",
   calendarTitle: "XV años de Samantha",
   dressCode: "Black & White",
+  /** Black & White formal inspo board */
+  dressCodeInspoUrl: "https://pin.it/4tfUZHXzU",
   itinerary: [
     {
       time: "5:30 PM",
@@ -67,14 +69,15 @@ export const event = {
     asset("/fotos/0I3A6217.jpg"),
     asset("/fotos/0I3A1741.jpg"),
     asset("/fotos/0I3A2299.jpg"),
-    asset("/fotos/0I3A2403.jpg"),
     asset("/fotos/0I3A5997.jpg"),
     asset("/fotos/0I3A6094.jpg"),
   ],
+  giftIcon: asset("/generated/icon-sobre-t.png"),
   // Desktop: boat landscape — Samantha on the right, open boat/water on the left
   heroImage: asset("/fotos/0I3A5827.jpg"),
   // Mobile: boat portrait
   heroImageMobile: asset("/fotos/0I3A5743.jpg"),
   parentsImage: asset("/fotos/0I3A5743.jpg"),
   parallaxImage: asset("/fotos/0I3A2409.jpg"),
+  parallaxPortraitImage: asset("/fotos/0I3A5743.jpg"),
 };
