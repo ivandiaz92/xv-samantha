@@ -35,21 +35,35 @@ export async function postToSheets(payload: Record<string, unknown>) {
   const url = process.env.GOOGLE_SHEETS_WEBAPP_URL;
   if (!url) return { ok: false as const, reason: "missing_url" as const };
 
-  const res = await fetch(url, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  });
-
-  if (!res.ok) {
-    return { ok: false as const, reason: "http_error" as const, status: res.status };
-  }
-
   try {
-    const data = await res.json();
-    return { ok: true as const, data };
+    // text/plain avoids Apps Script JSON content-type quirks
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload),
+      redirect: "follow",
+    });
+
+    const text = await res.text();
+    const trimmed = text.trim();
+
+    if (trimmed.startsWith("{")) {
+      const data = JSON.parse(trimmed) as { ok?: boolean };
+      return { ok: data.ok !== false, data };
+    }
+
+    // Redirect follow sometimes returns HTML even when the row was written
+    if (res.ok || res.status === 302) {
+      return { ok: true as const, data: null };
+    }
+
+    return {
+      ok: false as const,
+      reason: "http_error" as const,
+      status: res.status,
+    };
   } catch {
-    return { ok: true as const, data: null };
+    return { ok: false as const, reason: "network" as const };
   }
 }
 
@@ -58,7 +72,9 @@ export async function getFromSheets(action: string) {
   if (!url) return null;
 
   const endpoint = `${url}${url.includes("?") ? "&" : "?"}action=${encodeURIComponent(action)}`;
-  const res = await fetch(endpoint, { cache: "no-store" });
+  const res = await fetch(endpoint, { cache: "no-store", redirect: "follow" });
   if (!res.ok) return null;
-  return res.json();
+  const text = await res.text();
+  if (!text.trim().startsWith("{")) return null;
+  return JSON.parse(text);
 }

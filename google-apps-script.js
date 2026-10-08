@@ -1,15 +1,18 @@
 /**
- * Google Apps Script — pega esto en Extensiones > Apps Script
- * de un Google Sheet con dos pestañas: "RSVP" y "Firmas".
+ * Google Apps Script — paste into Extensions > Apps Script
+ * Spreadsheet tabs must be named exactly: "RSVP" and "Firmas"
  *
- * 1. Crea un Sheet nuevo
- * 2. Renombra Sheet1 a "RSVP" y crea otra hoja "Firmas"
- * 3. En RSVP, fila 1: Timestamp | Nombre | Apellido | Invitados | Alergias | Telefono
- * 4. En Firmas, fila 1: Timestamp | Nombre | Mensaje
- * 5. Pega este código, Deploy > New deployment > Web app
- *    - Execute as: Me
- *    - Who has access: Anyone
- * 6. Copia la URL y ponla en .env.local como GOOGLE_SHEETS_WEBAPP_URL
+ * RSVP header row:
+ *   Timestamp | Nombre | Apellido | Invitados | Alergias | Telefono
+ * Firmas header row:
+ *   Timestamp | Nombre | Mensaje
+ *
+ * Deploy > New deployment > Web app
+ *   Execute as: Me
+ *   Who has access: Anyone
+ *
+ * After editing code: Deploy > Manage deployments > Edit (pencil)
+ *   Version: New version > Deploy
  */
 
 function doPost(e) {
@@ -19,6 +22,7 @@ function doPost(e) {
 
     if (data.type === "rsvp") {
       const sheet = ss.getSheetByName("RSVP");
+      if (!sheet) throw new Error('Missing sheet tab named "RSVP"');
       sheet.appendRow([
         data.createdAt || new Date().toISOString(),
         data.firstName,
@@ -27,56 +31,56 @@ function doPost(e) {
         data.allergies || "",
         data.phone,
       ]);
-      return ContentService.createTextOutput(
-        JSON.stringify({ ok: true }),
-      ).setMimeType(ContentService.MimeType.JSON);
+      return json_({ ok: true });
     }
 
     if (data.type === "guestbook") {
       const sheet = ss.getSheetByName("Firmas");
+      if (!sheet) throw new Error('Missing sheet tab named "Firmas"');
       sheet.appendRow([
         data.createdAt || new Date().toISOString(),
         data.name,
         data.message,
       ]);
-      return ContentService.createTextOutput(
-        JSON.stringify({ ok: true }),
-      ).setMimeType(ContentService.MimeType.JSON);
+      return json_({ ok: true });
     }
 
-    return ContentService.createTextOutput(
-      JSON.stringify({ ok: false, error: "unknown_type" }),
-    ).setMimeType(ContentService.MimeType.JSON);
+    return json_({ ok: false, error: "unknown_type" });
   } catch (err) {
-    return ContentService.createTextOutput(
-      JSON.stringify({ ok: false, error: String(err) }),
-    ).setMimeType(ContentService.MimeType.JSON);
+    return json_({ ok: false, error: String(err) });
   }
 }
 
 function doGet(e) {
-  const action = e.parameter.action;
-  const ss = SpreadsheetApp.getActiveSpreadsheet();
+  try {
+    const action = (e && e.parameter && e.parameter.action) || "";
+    const ss = SpreadsheetApp.getActiveSpreadsheet();
 
-  if (action === "guestbook") {
-    const sheet = ss.getSheetByName("Firmas");
-    const values = sheet.getDataRange().getValues();
-    const messages = [];
-    for (var i = values.length - 1; i >= 1; i--) {
-      var row = values[i];
-      if (!row[1] && !row[2]) continue;
-      messages.push({
-        createdAt: row[0],
-        name: row[1],
-        message: row[2],
-      });
+    if (action === "guestbook") {
+      const sheet = ss.getSheetByName("Firmas");
+      if (!sheet) throw new Error('Missing sheet tab named "Firmas"');
+      const values = sheet.getDataRange().getValues();
+      const messages = [];
+      for (var i = values.length - 1; i >= 1; i--) {
+        var row = values[i];
+        if (!row[1] && !row[2]) continue;
+        messages.push({
+          createdAt: row[0],
+          name: row[1],
+          message: row[2],
+        });
+      }
+      return json_({ messages: messages });
     }
-    return ContentService.createTextOutput(
-      JSON.stringify({ messages: messages }),
-    ).setMimeType(ContentService.MimeType.JSON);
-  }
 
-  return ContentService.createTextOutput(
-    JSON.stringify({ ok: true }),
-  ).setMimeType(ContentService.MimeType.JSON);
+    return json_({ ok: true, service: "xv-samantha" });
+  } catch (err) {
+    return json_({ ok: false, error: String(err) });
+  }
+}
+
+function json_(obj) {
+  return ContentService.createTextOutput(JSON.stringify(obj)).setMimeType(
+    ContentService.MimeType.JSON,
+  );
 }
