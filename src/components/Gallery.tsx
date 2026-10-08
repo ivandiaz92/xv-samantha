@@ -104,10 +104,7 @@ export function Gallery() {
     <section id="fotos" className="section-pad overflow-hidden bg-bisque/25">
       <div className="mx-auto max-w-6xl">
         <Reveal>
-          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-dried-thyme">
-            Recuerdos
-          </p>
-          <h2 className="mt-3 text-center font-display text-4xl text-ink md:text-5xl">
+          <h2 className="text-center font-display text-4xl text-ink md:text-5xl">
             Galería
           </h2>
         </Reveal>

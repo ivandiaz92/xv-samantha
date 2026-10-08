@@ -39,7 +39,7 @@ export function DressCode() {
             {event.dressCode}
           </p>
           <p className="mx-auto mt-5 max-w-sm text-sm leading-relaxed text-white/60 md:mx-0 md:text-base">
-            Formal · blanco y negro. Viste elegante para celebrar esta noche.
+            Formal · viste a tu gusto para celebrar esta noche.
           </p>
         </Reveal>
       </div>

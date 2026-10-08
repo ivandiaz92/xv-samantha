@@ -61,7 +61,6 @@ export const event = {
   gallery: [
     asset("/fotos/0I3A5940.jpg"),
     asset("/fotos/0I3A1900.jpg"),
-    asset("/fotos/0I3A5743.jpg"),
     asset("/fotos/0I3A2145.jpg"),
     asset("/fotos/0I3A6027.jpg"),
     asset("/fotos/0I3A6152.jpg"),

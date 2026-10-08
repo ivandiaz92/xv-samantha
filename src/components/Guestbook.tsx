@@ -93,7 +93,7 @@ export function Guestbook() {
             onSubmit={onSubmit}
             className="relative mx-auto mt-10 max-w-lg overflow-hidden rounded-[28px] px-8 py-12 sm:px-10 sm:py-14 md:max-w-xl md:px-14 md:py-16"
             style={{
-              backgroundImage: `url('${withBasePath("/decor/paper-deckle.png")}')`,
+              backgroundImage: `url('${withBasePath("/decor/paper-deckle-bisque.png")}')`,
               backgroundSize: "cover",
               backgroundPosition: "center",
             }}

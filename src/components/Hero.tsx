@@ -40,17 +40,13 @@ function HeroCopy({
         </h1>
       </Reveal>
 
-      <Reveal delay={2}>
-        <p
-          className={`mt-4 font-medium uppercase tracking-[0.22em] ${
-            over
-              ? "text-base text-champagne/85 drop-shadow-[0_1px_8px_rgba(61,52,46,0.4)]"
-              : "text-sm text-dried-thyme"
-          }`}
-        >
-          {event.dateLabel}
-        </p>
-      </Reveal>
+      {!over && (
+        <Reveal delay={2}>
+          <p className="mt-4 text-sm font-bold uppercase tracking-[0.22em] text-[#C87D87]">
+            {event.dateLabel}
+          </p>
+        </Reveal>
+      )}
     </div>
   );
 }
@@ -90,7 +86,7 @@ export function Hero() {
             }}
           />
 
-          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-24">
+          <div className="relative z-10 flex h-full flex-col justify-start px-5 pb-16 pt-16">
             <HeroCopy variant="overPhoto" />
           </div>
         </div>
@@ -130,7 +126,7 @@ export function Hero() {
           className="pointer-events-none absolute left-6 top-24 w-32 opacity-45 float-soft lg:w-40"
         />
 
-        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-8 pb-20 pt-24 lg:px-12">
+        <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl items-center px-8 pb-28 pt-16 lg:px-12">
           <HeroCopy />
         </div>
       </div>

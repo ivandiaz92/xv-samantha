@@ -1,5 +1,6 @@
 import { Nav } from "@/components/Nav";
 import { Hero } from "@/components/Hero";
+import { DateLockup } from "@/components/DateLockup";
 import { Parents } from "@/components/Parents";
 import { DayBand } from "@/components/DayBand";
 import { Locations } from "@/components/Locations";
@@ -15,7 +16,15 @@ export default function Home() {
   return (
     <main>
       <Nav />
-      <Hero />
+      <div className="relative">
+        <Hero />
+        {/* Bridges hero ↔ parents — does not belong to either section */}
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 z-20 flex justify-center px-5 md:hidden">
+          <div className="translate-y-1/2">
+            <DateLockup />
+          </div>
+        </div>
+      </div>
       <Parents />
       <div className="relative">
         <DayBand />
@@ -41,7 +50,7 @@ export default function Home() {
         <p className="mt-2 font-display text-2xl text-ink">
           {event.celebrant.firstName}
         </p>
-        <p className="mt-4 text-[11px] uppercase tracking-[0.22em] text-dried-thyme">
+        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.22em] text-[#C87D87]">
           {event.dateLabel}
         </p>
       </footer>
