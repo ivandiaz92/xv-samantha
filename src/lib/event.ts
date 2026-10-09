@@ -78,5 +78,8 @@ export const event = {
   // Same photo as desktop; mobile crop via object-position in Hero
   heroImageMobile: asset("/fotos/0I3A5827.jpg"),
   parentsImage: asset("/fotos/0I3A5743.jpg"),
-  parallaxImage: asset("/fotos/0I3A2409.jpg"),
+  // Mobile band — gallery photo 7
+  parallaxImage: asset("/fotos/0I3A1741.jpg"),
+  // Desktop band — full-length portrait
+  parallaxImageDesktop: asset("/fotos/0I3A1754.jpg"),
 };

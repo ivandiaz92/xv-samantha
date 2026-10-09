@@ -41,7 +41,10 @@ export default function Home() {
       </div>
 
       <Locations />
-      <ParallaxPhoto image={event.parallaxImage} />
+      <ParallaxPhoto
+        image={event.parallaxImage}
+        imageDesktop={event.parallaxImageDesktop}
+      />
       <DressCode />
       <div className="relative">
         <Gallery />

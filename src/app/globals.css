@@ -262,25 +262,6 @@ body {
   display: none;
 }
 
-/* Parallax photo band */
-.parallax-media {
-  /* Mobile crop — body in frame, not empty studio sky */
-  background-position: 50% 52%;
-  height: 150%;
-}
-
-@media (hover: hover) and (pointer: fine) and (min-width: 768px) {
-  .parallax-media {
-    inset: 0;
-    height: 100% !important;
-    transform: none !important;
-    background-attachment: fixed;
-    background-position: 50% 58%;
-    background-size: cover;
-    will-change: auto;
-  }
-}
-
 .float-soft {
   animation: float-soft 5.5s ease-in-out infinite;
 }

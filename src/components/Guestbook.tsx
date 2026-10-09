@@ -143,10 +143,16 @@ export function Guestbook() {
         </Reveal>
 
         {entries.length > 0 && (
-          <div className="mt-12 space-y-4">
-            {entries.map((entry, i) => (
-              <Reveal key={`${entry.name}-${i}`}>
-                <blockquote className="rounded-[24px] border border-blush/60 bg-paper/70 px-5 py-5">
+          <div className="mt-12">
+            <div
+              className="max-h-[17.5rem] space-y-4 overflow-y-auto overscroll-contain pr-1 sm:max-h-[18.5rem]"
+              style={{ scrollbarGutter: "stable" }}
+            >
+              {entries.map((entry, i) => (
+                <blockquote
+                  key={`${entry.name}-${entry.createdAt ?? i}`}
+                  className="rounded-[24px] border border-blush/60 bg-paper/70 px-5 py-5"
+                >
                   <p className="font-script text-2xl text-antique-rose">
                     {entry.name}
                   </p>
@@ -154,8 +160,13 @@ export function Guestbook() {
                     {entry.message}
                   </p>
                 </blockquote>
-              </Reveal>
-            ))}
+              ))}
+            </div>
+            {entries.length > 2 && (
+              <p className="mt-3 text-center text-[11px] font-medium uppercase tracking-[0.16em] text-ink-soft/80">
+                Desliza para ver más
+              </p>
+            )}
           </div>
         )}
       </div>
