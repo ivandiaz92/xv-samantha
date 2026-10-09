@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { downloadEventICS } from "@/lib/calendar";
+import { openCalendarEvent } from "@/lib/calendar";
 import { event } from "@/lib/event";
 import { Reveal } from "./Reveal";
 
@@ -103,7 +103,7 @@ export function Countdown() {
         <Reveal delay={3}>
           <button
             type="button"
-            onClick={downloadEventICS}
+            onClick={openCalendarEvent}
             className="mt-8 inline-flex items-center justify-center rounded-full border border-antique-rose/40 bg-paper/80 px-7 py-3.5 text-sm font-semibold uppercase tracking-[0.18em] text-ink shadow-[0_10px_30px_rgba(200,125,135,0.12)] transition hover:border-antique-rose hover:bg-champagne md:mt-10 md:px-9 md:text-base"
           >
             Agregar al calendario

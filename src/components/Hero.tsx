@@ -62,7 +62,7 @@ export function Hero() {
             alt={event.celebrant.fullName}
             fill
             priority
-            className="object-cover object-[55%_48%]"
+            className="object-cover object-[72%_40%]"
             sizes="100vw"
           />
           <div
@@ -71,8 +71,8 @@ export function Hero() {
               background: `
                 linear-gradient(
                   to bottom,
-                  rgba(61, 52, 46, 0.48) 0%,
-                  rgba(61, 52, 46, 0.2) 55%,
+                  rgba(61, 52, 46, 0.52) 0%,
+                  rgba(61, 52, 46, 0.22) 55%,
                   rgba(61, 52, 46, 0) 100%
                 )
               `,

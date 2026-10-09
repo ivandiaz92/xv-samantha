@@ -73,11 +73,10 @@ export const event = {
     asset("/fotos/0I3A6094.jpg"),
   ],
   giftIcon: asset("/generated/icon-sobre-t.png"),
-  // Desktop: boat landscape — Samantha on the right, open boat/water on the left
+  // Boat landscape — Samantha on the right, open boat/water on the left
   heroImage: asset("/fotos/0I3A5827.jpg"),
-  // Mobile: fence / mountain portrait
-  heroImageMobile: asset("/fotos/0I3A6152.jpg"),
+  // Same photo as desktop; mobile crop via object-position in Hero
+  heroImageMobile: asset("/fotos/0I3A5827.jpg"),
   parentsImage: asset("/fotos/0I3A5743.jpg"),
   parallaxImage: asset("/fotos/0I3A2409.jpg"),
-  parallaxPortraitImage: asset("/fotos/0I3A5743.jpg"),
 };

@@ -62,11 +62,6 @@ export default function Home() {
         </div>
       </div>
       <GiftTable />
-      <ParallaxPhoto
-        image={event.parallaxPortraitImage}
-        mediaClassName="parallax-media parallax-media--boat"
-        className="relative h-[58vh] min-h-[280px] max-h-[520px] w-full overflow-hidden md:h-[75vh] md:max-h-none"
-      />
       <Guestbook />
       <Rsvp />
       <footer className="border-t border-blush/40 px-5 py-12 text-center">
